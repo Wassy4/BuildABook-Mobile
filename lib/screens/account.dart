@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:buildabook/widgets/widget.dart';
 
 
 class AccountPage extends StatefulWidget {
@@ -11,9 +12,8 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('BuildABook'),
-      ),
+      appBar: BaseAppBar(title: Text('My Account'), appBar: AppBar()),
+      drawer: BaseMenu(),
     );
   }
 }

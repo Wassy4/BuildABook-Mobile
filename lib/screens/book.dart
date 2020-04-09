@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:buildabook/widgets/widget.dart';
 
 
 class BookPage extends StatefulWidget {
@@ -11,9 +12,8 @@ class _BookPageState extends State<BookPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('BuildABook'),
-      ),
+      appBar: BaseAppBar(title: Text('Book'), appBar: AppBar()),
+      drawer: BaseMenu(),
     );
   }
 }
