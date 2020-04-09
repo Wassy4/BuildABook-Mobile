@@ -1,4 +1,3 @@
-import 'package:buildabook/screens/settings.dart';
 import 'package:flutter/material.dart';
 import 'screens/account.dart';
 import 'screens/book.dart';
@@ -18,7 +17,6 @@ class BuildABookApp extends StatelessWidget {
     BooksPage.tag: (context) => BooksPage(),
     ChapterPage.tag: (context) => ChapterPage(),
     LoginPage.tag: (context) => LoginPage(),
-    SettingsPage.tag: (context) => SettingsPage(),
     SignupPage.tag: (context) => SignupPage(),
     UserPage.tag: (context) => UserPage(),
   };
@@ -28,14 +26,8 @@ class BuildABookApp extends StatelessWidget {
     return MaterialApp(
       title: 'BuildABook',
       theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.lightGreen,
-        fontFamily: 'Nunito',
-      ),
-      darkTheme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.lightGreen,
-        fontFamily: 'Nunito',
+        primaryColor: Colors.lightGreen,
       ),
       home: BooksPage(),
       routes: routes,

@@ -20,7 +20,7 @@ class _BooksPageState extends State<BooksPage> {
             child: Container(
               child: ListView.separated(
                   itemCount: 20,
-                  separatorBuilder: (context, index) => Divider(color: Colors.grey),
+                  separatorBuilder: (context, index) => Divider(height: 0.0, color: Colors.grey),
                   itemBuilder: (context, index) {
                     return ListTile(
                         leading: Icon(Icons.book),

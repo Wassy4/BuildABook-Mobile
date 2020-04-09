@@ -1,11 +1,9 @@
 import 'package:buildabook/screens/account.dart';
 import 'package:buildabook/screens/books.dart';
-import 'package:buildabook/screens/settings.dart';
 import 'package:flutter/material.dart';
 
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Color backgroundColor = Colors.lightGreen;
   final Text title;
   final AppBar appBar;
 
@@ -16,7 +14,6 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: title,
-      backgroundColor: backgroundColor,
     );
   }
 
@@ -40,8 +37,8 @@ class BaseMenu extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: Icon(Icons.book),
+              title: Text('Books'),
               onTap: () {
                 Navigator.push(
                     context,
@@ -56,16 +53,6 @@ class BaseMenu extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => AccountPage()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Application Settings'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()),
                 );
               },
             ),
