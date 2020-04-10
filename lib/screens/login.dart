@@ -1,5 +1,5 @@
+import 'package:buildabook/screens/books.dart';
 import 'package:flutter/material.dart';
-import 'books.dart';
 import 'package:buildabook/widgets/widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       'BuildABook',
                       style: TextStyle(
-                          color: Colors.lightGreen,
+                          color: Colors.green,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )
@@ -56,8 +56,8 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: (){
                               //forgot password screen
                             },
-                            textColor: Colors.lightGreen,
-                            child: Text('Forgot Password?'),
+                            textColor: Colors.green,
+                            child: Text('Forgot Password'),
                           )
                           ),
                         ),
@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
                     child: RaisedButton(
                       textColor: Colors.white,
-                      color: Colors.lightGreen,
+                      color: Colors.green,
                       child: Text('Login'),
                       onPressed: () {
                         print(nameController.text);
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: <Widget>[
                         Text('New user?'),
                         FlatButton(
-                          textColor: Colors.lightGreen,
+                          textColor: Colors.green,
                           child: Text(
                             'Sign up here',
                             style: TextStyle(fontSize: 15),

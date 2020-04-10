@@ -13,6 +13,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       title: title,
     );
   }
@@ -30,9 +31,9 @@ class BaseMenu extends StatelessWidget {
             Container(
               height: 88.0,
               child: DrawerHeader(
-                child: Text('BuildABook', style: TextStyle(fontSize: 20)),
+                child: Text('Navigation Menu', style: TextStyle(fontSize: 20)),
                 decoration: BoxDecoration(
-                  color: Colors.lightGreen,
+                  color: Colors.green,
                 ),
               ),
             ),
@@ -48,7 +49,7 @@ class BaseMenu extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.account_box),
-              title: Text('My Account'),
+              title: Text('Account Settings'),
               onTap: () {
                 Navigator.push(
                   context,

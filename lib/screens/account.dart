@@ -14,6 +14,22 @@ class _AccountPageState extends State<AccountPage> {
     return Scaffold(
       appBar: BaseAppBar(title: Text('My Account'), appBar: AppBar()),
       drawer: BaseMenu(),
+      body: Column(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              margin: EdgeInsets.only(top: 20.0),
+              child: CircleAvatar(
+                backgroundColor: Colors.grey,
+                foregroundColor: Colors.black,
+                radius: 100.0,
+                child: Text('Image'),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

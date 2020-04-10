@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screens/account.dart';
-import 'screens/book.dart';
 import 'screens/books.dart';
 import 'screens/chapter.dart';
 import 'screens/login.dart';
@@ -13,7 +12,6 @@ void main() => runApp(BuildABookApp());
 class BuildABookApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     AccountPage.tag: (context) => AccountPage(),
-    BookPage.tag: (context) => BookPage(),
     BooksPage.tag: (context) => BooksPage(),
     ChapterPage.tag: (context) => ChapterPage(),
     LoginPage.tag: (context) => LoginPage(),
@@ -24,10 +22,10 @@ class BuildABookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BuildABook',
+      title: 'BuildABook Reader',
       theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.lightGreen,
+        brightness: Brightness.light,
+        primaryColor: Colors.green,
       ),
       home: BooksPage(),
       routes: routes,
