@@ -3,7 +3,6 @@ import 'screens/account.dart';
 import 'screens/books.dart';
 import 'screens/chapter.dart';
 import 'screens/contenders.dart';
-import 'screens/login.dart';
 import 'screens/signup.dart';
 import 'screens/user.dart';
 import 'screens/winners.dart';
@@ -17,7 +16,6 @@ class BuildABookApp extends StatelessWidget {
     BooksPage.tag: (context) => BooksPage(),
     ChapterPage.tag: (context) => ChapterPage(),
     ContendersPage.tag: (context) => ContendersPage(),
-    LoginPage.tag: (context) => LoginPage(),
     SignupPage.tag: (context) => SignupPage(),
     UserPage.tag: (context) => UserPage(),
     WinnersPage.tag: (context) => WinnersPage(),

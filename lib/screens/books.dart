@@ -12,53 +12,16 @@ class BooksPage extends StatefulWidget {
 }
 
 class _BooksPageState extends State<BooksPage> {
-  Future<List<BookItem>> _getBooks() async {
-    var data = await http.get('https://next.json-generator.com/api/json/get/NkhgQltwd');
-    var jsonData = json.decode(data.body);
-
-    List<BookItem> books = [];
-
-    for (var b in jsonData){
-      BookItem book = BookItem(
-          b['_id'],
-          b['title'],
-          b['writingPrompt'],
-          b['image'],
-          b['chaptersArray'],
-          b['numberOfChapters'],
-          b['dateCreated'],
-          b['views'],
-          b['authorArray'],
-          b['inProgress'],
-          b['comments'],
-          b['isPremium'],
-          b['experationDate'],
-          b['duration'],
-          b['genre']);
-
-      books.add(book);
-    }
-
-    return books;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: Text('BuildABook'), appBar: AppBar()),
-      drawer: BaseMenu(),
+      appBar: BaseAppBar(title: Text('BuildABook Reader'), appBar: AppBar()),
+      //drawer: BaseMenu(),
       body: Container(
-        child: FutureBuilder(
-          future: _getBooks(),
+        child: FutureBuilder<List<Books>>(
+          future: fetchBooks(),
           builder: (BuildContext context, AsyncSnapshot snapshot){
-            if (snapshot.data == null){
-              return Container(
-                child: Center(
-                  child: Text('Loading...')
-                )
-              );
-            }
-            else {
+            if (snapshot.hasData){
               return ListView.separated(
                   itemCount: snapshot.data.length,
                   separatorBuilder: (context, index) =>
@@ -67,7 +30,6 @@ class _BooksPageState extends State<BooksPage> {
                     return ListTile(
                       leading: Image.network(snapshot.data[index].image),
                       title: Text(snapshot.data[index].title),
-                      subtitle: Text(snapshot.data[index].genre),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
@@ -75,14 +37,24 @@ class _BooksPageState extends State<BooksPage> {
                           Text(snapshot.data[index].views.toString()),
                           SizedBox(width: 10),
                           Icon(Icons.alarm),
-                          Text(snapshot.data[index].duration),
+                          Text(snapshot.data[index].duration.toString()),
                         ],
                       ),
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage(snapshot.data[index])));
-                        },
+                      },
                     );
                   }
+              );
+            }
+            else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            else {
+              return Container(
+                  child: Center(
+                      child: Text('Loading...')
+                  )
               );
             }
           }
@@ -92,38 +64,55 @@ class _BooksPageState extends State<BooksPage> {
   }
 }
 
-class BookItem {
-  final bool inProgress;
-  final bool isPremium;
-  final int authorArray;
-  final int chaptersArray;
-  final int id;
+Future<List<Books>> fetchBooks() async {
+  var response = await http.get('https://buildabook.herokuapp.com/api/book/getAll');
+  var jsonData = json.decode(response.body);
+
+  List<Books> books = [];
+
+  for (var b in jsonData){
+    Books book = Books(
+        b['_id'],
+        b['views'],
+        b['authorArray'],
+        b['inProgressFlag'],
+        b['duration'],
+        b['title'],
+        b['writingPrompt'],
+        b['image'],
+        b['numberOfChapters'],
+        b['dateCreated']
+    );
+
+    books.add(book);
+  }
+
+  return books;
+}
+
+class Books {
+  final bool inProgressFlag;
   final int numberOfChapters;
   final int views;
-  final String comments;
-  final String dateCreated;
-  final String duration;
-  final String expirationDate;
-  final String image;
-  final String genre;
+  final String id;
+  final List<dynamic> authorArray;
+  final int duration;
   final String title;
   final String writingPrompt;
+  final String image;
+  final String dateCreated;
 
-  BookItem(
-      this.id,
-      this.title,
-      this.writingPrompt,
-      this.image,
-      this.chaptersArray,
-      this.numberOfChapters,
-      this.dateCreated,
-      this.views,
-      this.authorArray,
-      this.inProgress,
-      this.comments,
-      this.isPremium,
-      this.expirationDate,
-      this.duration,
-      this.genre
-      );
-  }
+
+  Books(
+    this.id,
+    this.views,
+    this.authorArray,
+    this.inProgressFlag,
+    this.duration,
+    this.title,
+    this.writingPrompt,
+    this.image,
+    this.numberOfChapters,
+    this.dateCreated
+  );
+}
