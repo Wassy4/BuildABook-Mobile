@@ -74,7 +74,7 @@ class BookPage extends StatelessWidget {
             ),
             RaisedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ChapterPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ChapterPage(book)));
               } ,
               child: Text('Read Chapters'),
             ),
