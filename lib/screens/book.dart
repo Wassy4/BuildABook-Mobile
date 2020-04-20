@@ -1,3 +1,4 @@
+import 'package:buildabook/screens/chapter.dart';
 import 'package:flutter/material.dart';
 import 'package:buildabook/widgets/widget.dart';
 import 'books.dart';
@@ -8,7 +9,7 @@ import 'contenders.dart';
 class BookPage extends StatelessWidget {
   static String tag = 'book-page';
 
-  final Books book;
+  Books book;
 
   BookPage(this.book);
 
@@ -71,7 +72,14 @@ class BookPage extends StatelessWidget {
                 ),
               ],
             ),
+            RaisedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ChapterPage()));
+              } ,
+              child: Text('Read Chapters'),
+            ),
           ]
+
         ),
       );
   }
