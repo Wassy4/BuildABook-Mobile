@@ -14,7 +14,7 @@ class BuildABookApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     AccountPage.tag: (context) => AccountPage(),
     BooksPage.tag: (context) => BooksPage(),
-    ChapterPage.tag: (context) => ChapterPage(),
+    //ChapterPage.tag: (context) => ChapterPage(books: book),
     ContendersPage.tag: (context) => ContendersPage(),
     SignupPage.tag: (context) => SignupPage(),
     UserPage.tag: (context) => UserPage(),
