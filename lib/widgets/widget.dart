@@ -1,5 +1,5 @@
-import 'package:buildabook/screens/account.dart';
 import 'package:buildabook/screens/books.dart';
+import 'package:buildabook/screens/users.dart';
 import 'package:flutter/material.dart';
 
 
@@ -49,11 +49,11 @@ class BaseMenu extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.account_box),
-              title: Text('Account Settings'),
+              title: Text('User List'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AccountPage()),
+                  MaterialPageRoute(builder: (context) => UsersPage()),
                 );
               },
             ),

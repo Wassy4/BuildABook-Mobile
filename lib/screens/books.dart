@@ -16,7 +16,7 @@ class _BooksPageState extends State<BooksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(title: Text('BuildABook Reader'), appBar: AppBar()),
-      //drawer: BaseMenu(),
+      drawer: BaseMenu(),
       body: Container(
         child: FutureBuilder<List<Books>>(
           future: fetchBooks(),
@@ -28,17 +28,26 @@ class _BooksPageState extends State<BooksPage> {
                       Divider(height: 0.0, color: Colors.grey),
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                      leading: Image.network(snapshot.data[index].image),
+                      leading: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: 60,
+                          minWidth: 60,
+                          maxHeight: 60,
+                          maxWidth: 60,
+                        ),
+                        child: Image.network(snapshot.data[index].image),
+                      ),
                       title: Text(snapshot.data[index].title),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(Icons.remove_red_eye),
-                          Text(snapshot.data[index].views.toString()),
-                          SizedBox(width: 10),
-                          Icon(Icons.alarm),
-                          Text(snapshot.data[index].duration.toString()),
-                        ],
+                          Icon(Icons.keyboard_arrow_right),
+                          //Icon(Icons.remove_red_eye),
+                          //Text(snapshot.data[index].views.toString()),
+                          //SizedBox(width: 10),
+                          //Icon(Icons.alarm),
+                          //Text(snapshot.data[index].duration.toString()),
+                      ],
                       ),
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage(snapshot.data[index])));
@@ -80,6 +89,7 @@ Future<List<Books>> fetchBooks() async {
         b['title'],
         b['writingPrompt'],
         b['image'],
+        b['chaptersArray'],
         b['numberOfChapters'],
         b['dateCreated']
     );
@@ -96,6 +106,7 @@ class Books {
   final int views;
   final String id;
   final List<dynamic> authorArray;
+  final List<dynamic> chaptersArray;
   final int duration;
   final String title;
   final String writingPrompt;
@@ -112,6 +123,7 @@ class Books {
     this.title,
     this.writingPrompt,
     this.image,
+    this.chaptersArray,
     this.numberOfChapters,
     this.dateCreated
   );
