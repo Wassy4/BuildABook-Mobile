@@ -47,16 +47,6 @@ class BaseMenu extends StatelessWidget {
                 );
               },
             ),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('User List'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => UsersPage()),
-                );
-              },
-            ),
           ],
         )
     );

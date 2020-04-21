@@ -46,42 +46,42 @@ class ContenderPage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 20),
                   child: Row(
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Text("Author:", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Flexible(
-                            child: GestureDetector(
-                              child: Text(contender.author,
-                                style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Text("Author:", style: TextStyle(fontWeight: FontWeight.bold)),
+                            Flexible(
+                              child: GestureDetector(
+                                child: Text(contender.author,
+                                  style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
+                                ),
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()));
+                                },
                               ),
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage()));
-                              },
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(20.0),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Text("Upvotes:", style: TextStyle(fontWeight: FontWeight.bold)),
+                            Flexible(
+                              child: Text(contender.upvoteCount.toString()),
+                            ),
+                          ],
+                        ),
                       ),
-                      Column(
-                        children: <Widget>[
-                          Text("Date Created:", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Flexible(
-                            child: Text(contender.dateCreated),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(20.0),
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Text("Upvotes:", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Flexible(
-                            child: Text(contender.upvoteCount.toString()),
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Text("Date Created:", style: TextStyle(fontWeight: FontWeight.bold)),
+                            Flexible(
+                              child: Text(contender.dateCreated),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   )
